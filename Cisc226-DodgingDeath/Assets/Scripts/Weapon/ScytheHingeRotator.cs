@@ -12,7 +12,6 @@ public class HingeRotator : MonoBehaviour
     }
 
 
-
     void rotate()
     {
         Vector2 mouseScreen = Mouse.current.position.ReadValue();
