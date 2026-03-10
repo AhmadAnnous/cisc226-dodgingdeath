@@ -6,13 +6,7 @@ using UnityEngine.Tilemaps;
 
 public class HingeRotator : MonoBehaviour
 {
-    void Update()
-    {
-        rotate();
-    }
-
-
-    void rotate()
+    public void rotate()
     {
         Vector2 mouseScreen = Mouse.current.position.ReadValue();
         Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(mouseScreen);
