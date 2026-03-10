@@ -10,11 +10,18 @@ public enum EnemyState
     Attack
 };
 
+public enum EnemyType
+{
+    Melee,
+    Ranged,
+};
+
 public class EnemyController : MonoBehaviour
 {
 
     GameObject player;
     public EnemyState currstate = EnemyState.Wander;
+    public EnemyType enemyType;
     public float range = 10;
     public float speed = 1;
     private bool chooseDir = false;
@@ -23,6 +30,9 @@ public class EnemyController : MonoBehaviour
     public float attackRange;
     private bool cooldownAttack = false;
     public float cooldown;
+    public Transform firePoint;
+    public GameObject bulletPrefab;
+    public float bulletSpeed = 10f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -101,8 +111,19 @@ public class EnemyController : MonoBehaviour
     {
         if(!cooldownAttack)
         {
-            GameController.DamagePlayer(10);
-            StartCoroutine(Cooldown());
+            switch(enemyType)
+            {
+                case(EnemyType.Melee):
+                    GameController.DamagePlayer(10);
+                    StartCoroutine(Cooldown());
+                    break;
+                case(EnemyType.Ranged):
+                    Shoot();
+                    StartCoroutine(Cooldown());
+                    break;
+            }
+            
+            
         }
     }
 
@@ -113,6 +134,12 @@ public class EnemyController : MonoBehaviour
         cooldownAttack = false;
     }
 
+    void Shoot()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Vector2 direction = (player.transform.position - firePoint.position).normalized;
+        bullet.GetComponent<BulletController>().Initialize(direction, bulletSpeed);
+    }
     void Death()
     {
         Destroy(gameObject);
