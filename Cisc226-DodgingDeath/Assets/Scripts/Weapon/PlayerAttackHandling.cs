@@ -18,7 +18,6 @@ public class PlayerAttack : MonoBehaviour
             
             if(Input.GetMouseButton(0))
             {
-                Debug.Log("Swinging");
                 GetComponent<HingeRotator>().rotate();
                 anim.SetTrigger("Attack");
                 timeUntilMelee = attackDelay;
@@ -34,7 +33,6 @@ public class PlayerAttack : MonoBehaviour
         if(other.tag == "Enemy")
         {
             other.GetComponent<EnemyController>().takeDamage(damage);
-            Debug.Log("damaged enemy");
         }
     }
 

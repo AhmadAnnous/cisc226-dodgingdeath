@@ -160,6 +160,5 @@ public class EnemyController : MonoBehaviour
         {
             Death();
         }
-        Debug.Log("take damage");
     }
 }
