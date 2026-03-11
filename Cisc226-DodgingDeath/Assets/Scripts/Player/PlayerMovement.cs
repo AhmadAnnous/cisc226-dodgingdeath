@@ -83,20 +83,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         _rb.linearVelocity = newVelocity;
-    }
-}
+
         if(!dashing)
         {
             _movement.Set(InputManager.Movement.x, InputManager.Movement.y);
             _rb.linearVelocity = _movement * _moveSpeed;
         }
-        
-
-
         staminaCalc();
         checkDash();
     }
-
 
     private void checkDash()
     {
