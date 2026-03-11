@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 439578297}
   - component: {fileID: 439578296}
   - component: {fileID: 439578295}
+  - component: {fileID: 439578299}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -363,7 +364,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -394,6 +395,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &439578299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439578294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3413bd8477f2e434ca9fc84adf966a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomCamera
+  player: {fileID: 2092181675}
+  roomSize: 12
 --- !u!1 &556823923
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +552,55 @@ Transform:
   m_Children:
   - {fileID: 281985279}
   m_Father: {fileID: 556823924}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1036230953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1036230955}
+  - component: {fileID: 1036230954}
+  m_Layer: 0
+  m_Name: MapGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1036230954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036230953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e89b119b6c753494f941486c38972613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapGenerator
+  cellPrefab: {fileID: 7856926312440601756, guid: 7e55cc277ba19e744b836942bf9b5730, type: 3}
+  item: {fileID: -6551560991100623599, guid: 20b95258b54b35946b47dc25f1babc22, type: 3}
+  shop: {fileID: -4341304690616336, guid: a512f239c72891c44885692f71f582c7, type: 3}
+  boss: {fileID: 71834854948390253, guid: 35454297e91cc6d4a894b763daa7a300, type: 3}
+  enemyPrefab: {fileID: 1145003275}
+--- !u!4 &1036230955
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036230953}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.20163, y: -4.06577, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1145003275
 GameObject:
@@ -1232,6 +1296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   _moveSpeed: 5
+  roomSize: 12
 --- !u!212 &2092181673
 SpriteRenderer:
   serializedVersion: 2
@@ -1429,3 +1494,4 @@ SceneRoots:
   - {fileID: 439578298}
   - {fileID: 2090633456}
   - {fileID: 2092181675}
+  - {fileID: 1036230955}
