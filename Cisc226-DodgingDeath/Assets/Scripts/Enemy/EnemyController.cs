@@ -34,6 +34,13 @@ public class EnemyController : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletSpeed = 10f;
 
+
+    //placeholder values, feel free to edit
+    public int health = 10;
+    public double lifestealValue = 5;
+
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -142,6 +149,17 @@ public class EnemyController : MonoBehaviour
     }
     void Death()
     {
+        player.GetComponent<PlayerHealth>().addHealth(lifestealValue);
         Destroy(gameObject);
+    }
+
+    public void takeDamage(int damageDealt)
+    {
+        health -= damageDealt;
+        if(health <= 0)
+        {
+            Death();
+        }
+        Debug.Log("take damage");
     }
 }

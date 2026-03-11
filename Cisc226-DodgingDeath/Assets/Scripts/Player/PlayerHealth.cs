@@ -6,6 +6,9 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] double healthDrainPerSec;
     [SerializeField] double maxHealth;
     [SerializeField] double startingHealth;
+    
+    //for intro and whatnot, mainly for later use
+    bool healthDrainable = true;
 
     void Start()
     {
@@ -14,6 +17,14 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        health -= (Time.deltaTime * healthDrainPerSec);
+        if(healthDrainable)
+        {
+            health -= (Time.deltaTime * healthDrainPerSec);
+        }
+    }
+
+    public void addHealth(double healthGain)
+    {
+        health += healthGain;
     }
 }
