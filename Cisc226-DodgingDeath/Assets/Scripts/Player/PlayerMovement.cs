@@ -3,7 +3,7 @@ using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float _moveSpeed = 5f;
+    [SerializeField] public static float moveSpeed = 5f;
     [SerializeField] private float roomSize = 12f;
 
     private Vector2 _movement;
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         _movement.Set(InputManager.Movement.x, InputManager.Movement.y);
 
         Vector2 position = transform.position;
-        Vector2 velocity = _movement * _moveSpeed;
+        Vector2 velocity = _movement * moveSpeed;
 
         int roomX = Mathf.RoundToInt(position.x / roomSize);
         int roomY = Mathf.RoundToInt(position.y / roomSize);

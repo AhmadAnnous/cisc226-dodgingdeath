@@ -5,11 +5,17 @@ public class PlayerAttack : MonoBehaviour
 {
 
     [SerializeField] private Animator anim;
-    [SerializeField] private float attackDelay;
-    [SerializeField] private int damage;
+    [SerializeField] public static float attackDelay;
+    [SerializeField] public static int damage;
     float timeUntilMelee = 0;
     
 
+
+    public void Start()
+    {
+        attackDelay = 1f;
+        damage = 3;
+    }
 
     void Update()
     {
