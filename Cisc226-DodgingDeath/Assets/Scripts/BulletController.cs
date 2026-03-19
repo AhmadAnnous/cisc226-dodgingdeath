@@ -18,9 +18,9 @@ public class BulletController : MonoBehaviour
         transform.position += (Vector3)(direction * speed * Time.deltaTime);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if(collision.CompareTag("Player"))
         {
             GameController.DamagePlayer(5);
             Destroy(gameObject);

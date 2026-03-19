@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         health = maxHealth;
+        healthbar.SetMaxHealth(maxHealth);
     }
 
     void Awake()
@@ -41,7 +42,13 @@ public class GameController : MonoBehaviour
         health -= Time.deltaTime * healthDrainPerSec;
         healthbar.SetHealth(health);
         healthText.text = "Health: " + Mathf.Floor(health);
+        if (health <= 0)
+        {
+            KillPlayer();
+        }
     }
+
+    
 
     public static void DamagePlayer(int damage)
     {
@@ -60,6 +67,7 @@ public class GameController : MonoBehaviour
 
     private static void KillPlayer()
     {
-        
+        health = 0;
+        Time.timeScale = 0;
     }
 }

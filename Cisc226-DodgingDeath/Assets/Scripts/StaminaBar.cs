@@ -1,22 +1,21 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class StaminaBar : MonoBehaviour
 {
-
     public Slider slider;
     public Gradient gradient;
     public Image fill;
-    public void SetMaxHealth(int maxhealth)
+    public void SetMaxStamina(int maxstamina)
     {
-        slider.maxValue = maxhealth;
-        slider.value = maxhealth;
+        slider.maxValue = maxstamina;
+        slider.value = maxstamina;
         fill.color = gradient.Evaluate(1f);
     }
 
-    public void SetHealth(float health)
+    public void SetStamina(float stamina)
     {
-        slider.value = health;
+        slider.value = stamina;
         fill.color = gradient.Evaluate(slider.normalizedValue);
     }
 }

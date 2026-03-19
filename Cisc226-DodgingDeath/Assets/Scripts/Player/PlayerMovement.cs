@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,20 +21,26 @@ public class PlayerMovement : MonoBehaviour
     private float dashTimer = 0;
     private bool dashing;
     private Vector2 dashDir;
+    public TMP_Text staminaText;
+    public StaminaBar staminabar;
     
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        mapGenerator = FindObjectOfType<MapGenerator>();
+        mapGenerator = FindFirstObjectByType<MapGenerator>();
     }
 
     void Start()
     {
-        stamina = (int) maxStamina;
+        stamina = maxStamina;
+        staminabar.SetMaxStamina(maxStamina);
     }
 
     private void Update()
     {
+        staminabar.SetStamina(stamina);
+        staminaText.text = "Stamina: " + Mathf.Floor(stamina);
+
         _movement.Set(InputManager.Movement.x, InputManager.Movement.y);
 
         Vector2 position = transform.position;
@@ -76,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void checkDash(ref Vector2 velocity)
     {
-        if (Input.GetKeyDown("v") && stamina > 1)
+        if (Input.GetKeyDown("v") && stamina >= 1)
         {
             stamina--;
             dashDir = _movement.normalized;
