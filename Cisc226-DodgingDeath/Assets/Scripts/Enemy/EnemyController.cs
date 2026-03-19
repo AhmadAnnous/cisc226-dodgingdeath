@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
 
     //placeholder values, feel free to edit
     public int health = 10;
-    public double lifestealValue = 5;
+    public float lifestealValue = 5;
 
 
 
@@ -120,11 +120,11 @@ public class EnemyController : MonoBehaviour
         {
             switch(enemyType)
             {
-                case(EnemyType.Melee):
+                case EnemyType.Melee:
                     GameController.DamagePlayer(10);
                     StartCoroutine(Cooldown());
                     break;
-                case(EnemyType.Ranged):
+                case EnemyType.Ranged:
                     Shoot();
                     StartCoroutine(Cooldown());
                     break;
@@ -149,7 +149,7 @@ public class EnemyController : MonoBehaviour
     }
     void Death()
     {
-        player.GetComponent<PlayerHealth>().addHealth(lifestealValue);
+        GameController.HealPlayer(lifestealValue);
         Destroy(gameObject);
     }
 
