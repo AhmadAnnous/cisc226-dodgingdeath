@@ -6,12 +6,14 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
 
-    private static float health = 50;
-    private static int maxHealth = 120;
-    private static float moveSpeed = 5f;
-    private static int playerDamage = 1;
-    private static float attackSpeed = 0.5f;
-    private static float healthDrainPerSec = 1f;
+    public static float health = 50;
+    public static int maxHealth = 120;
+    public static float moveSpeed = 5f;
+    public static int playerDamage = 4;
+    public static float attackSpeed = 0.5f;
+    public static float healthDrainPerSec = 1f;
+    public static float spinDuration = 0.17f;
+    public static float abilityCD = 3f;
     
     public static float Health{ get => health; set => health = value; }
     public static int Damage { get => playerDamage; set => playerDamage = value; }

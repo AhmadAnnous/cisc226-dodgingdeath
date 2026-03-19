@@ -5,7 +5,7 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] public static float moveSpeed = 5f;
+    [SerializeField] public static float moveSpeed = GameController.moveSpeed;
     [SerializeField] private float roomSize = 12f;
 
     private Vector2 _movement;

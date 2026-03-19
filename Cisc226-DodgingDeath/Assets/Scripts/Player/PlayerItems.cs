@@ -22,23 +22,29 @@ public class PlayerItems : MonoBehaviour
             //Attack Speed
             case 0:
                 if(!Item.itemsObtained[other.GetComponent<Item>().thisItem])
+                
                     Item.itemsObtained[other.GetComponent<Item>().thisItem] = true;
-                    PlayerAttack.attackDelay *=  0.5f;
-                    Debug.Log(PlayerAttack.attackDelay *=  0.5f);
+                    GameController.attackSpeed *=  0.5f;
+                    Debug.Log(GameController.attackSpeed);
+                
                 break;
             //Damage
             case 1:
                 if(!Item.itemsObtained[other.GetComponent<Item>().thisItem])
+                
                     Item.itemsObtained[other.GetComponent<Item>().thisItem] = true;
-                    PlayerAttack.damage *=  2;
-                    Debug.Log(PlayerAttack.damage);
+                    GameController.playerDamage *=  2;
+                    Debug.Log(GameController.playerDamage);
+                
                 break;
             //Player Speed
             case 2:
                 if(!Item.itemsObtained[other.GetComponent<Item>().thisItem])
+                
                     Item.itemsObtained[other.GetComponent<Item>().thisItem] = true;
                     PlayerMovement.moveSpeed *= 2;
                     Debug.Log(PlayerMovement.moveSpeed);
+                
                 break;
         }
     }

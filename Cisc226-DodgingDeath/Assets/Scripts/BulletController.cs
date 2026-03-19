@@ -27,4 +27,10 @@ public class BulletController : MonoBehaviour
         }
 
     }
+
+
+    public void delete()
+    {
+        Destroy(gameObject);
+    }
 }
