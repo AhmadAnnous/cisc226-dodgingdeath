@@ -69,7 +69,7 @@ public class GameController : MonoBehaviour
 
     private static void KillPlayer()
     {
-        health = 0;
-        Time.timeScale = 0;
+        // health = 0;
+        // Time.timeScale = 0;
     }
 }

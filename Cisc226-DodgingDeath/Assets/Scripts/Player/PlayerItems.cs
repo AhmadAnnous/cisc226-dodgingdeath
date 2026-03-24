@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
 public class PlayerItems : MonoBehaviour
 {
     public ArrayList items = new ArrayList();
+    public GameObject InventoryContent;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Item")

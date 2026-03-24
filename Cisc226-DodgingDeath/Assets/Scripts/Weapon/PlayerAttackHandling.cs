@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Accessibility;
+using TMPro;
+using UnityEngine.UI;
+using System;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -9,9 +12,27 @@ public class PlayerAttack : MonoBehaviour
     float timeUntilMelee = 0;
     bool eraseBullets = false;
     float abilityCDTimer = 0f;
+    public TMP_Text abilitytext;
+    public StaminaBar abilitybar;
+
+    void Start()
+    {
+        abilitybar.SetMaxStamina((int) GameController.abilityCD);
+    }
 
     void Update()
     {
+        abilitybar.SetStamina(GameController.abilityCD - abilityCDTimer);
+        if (abilityCDTimer <= 0)
+        {
+            abilitytext.text = "";
+        }
+        else
+        {
+            abilitytext.text = "" + Mathf.Floor(abilityCDTimer);
+        }
+        
+
         if(timeUntilMelee <= 0f)
         {
             eraseBullets = false;
