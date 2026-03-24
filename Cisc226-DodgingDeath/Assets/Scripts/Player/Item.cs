@@ -7,6 +7,7 @@ public class Item : MonoBehaviour
     public static String[] itemList = new string[3];
     public static bool[] itemsObtained = new bool[itemList.Length]; //for stopping duplicates
     [SerializeField] public int thisItem;
+    public Sprite icon;
 
 
     //I stg I'm not this stupid, C# 9 literally won't let you initialize a list properly
