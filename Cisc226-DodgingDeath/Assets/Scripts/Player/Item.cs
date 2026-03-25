@@ -23,7 +23,6 @@ public class Item : MonoBehaviour
         }
     }
 
-
     public void delete()
     {
         Destroy(gameObject);

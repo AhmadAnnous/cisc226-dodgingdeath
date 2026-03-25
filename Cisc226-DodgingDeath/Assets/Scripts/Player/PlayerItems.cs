@@ -7,12 +7,17 @@ using UnityEngine;
 public class PlayerItems : MonoBehaviour
 {
     public ArrayList items = new ArrayList();
-    public GameObject InventoryContent;
+    public Inventory inventory;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Item")
         {
+
+            Item item = other.GetComponent<Item>();
+
             getItem(other.GetComponent<Item>().thisItem, other);
+            inventory.AddItemIcon(item.icon);
+
             other.GetComponent<Item>().delete();
         }
     }
