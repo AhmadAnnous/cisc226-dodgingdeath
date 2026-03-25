@@ -15,45 +15,17 @@ public class PlayerItems : MonoBehaviour
 
             Item item = other.GetComponent<Item>();
 
-            getItem(other.GetComponent<Item>().thisItem, other);
+            getItem(item);
             inventory.AddItemIcon(item.icon);
 
-            other.GetComponent<Item>().delete();
+            
         }
     }
 
-    private void getItem(int item, Collider2D other)
+    private void getItem(Item item)
     {
-        switch(item)
-        {
-            //Attack Speed
-            case 0:
-                if(!Item.itemsObtained[other.GetComponent<Item>().thisItem])
-                
-                    Item.itemsObtained[other.GetComponent<Item>().thisItem] = true;
-                    GameController.attackSpeed *=  0.5f;
-                    Debug.Log(GameController.attackSpeed);
-                
-                break;
-            //Damage
-            case 1:
-                if(!Item.itemsObtained[other.GetComponent<Item>().thisItem])
-                
-                    Item.itemsObtained[other.GetComponent<Item>().thisItem] = true;
-                    GameController.playerDamage *=  2;
-                    Debug.Log(GameController.playerDamage);
-                
-                break;
-            //Player Speed
-            case 2:
-                if(!Item.itemsObtained[other.GetComponent<Item>().thisItem])
-                
-                    Item.itemsObtained[other.GetComponent<Item>().thisItem] = true;
-                    PlayerMovement.moveSpeed *= 2;
-                    Debug.Log(PlayerMovement.moveSpeed);
-                
-                break;
-        }
+        item.onPickup();
+        item.delete();
     }
     
 }
