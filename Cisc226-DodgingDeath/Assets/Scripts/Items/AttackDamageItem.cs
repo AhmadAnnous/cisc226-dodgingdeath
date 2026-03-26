@@ -14,7 +14,6 @@ public class AttackDamageItem : MonoBehaviour, Item
     public void onPickup()
     {
         GameController.playerDamage *= damageMult;
-        Debug.Log(GameController.playerDamage);
     }
     public void delete()
     {

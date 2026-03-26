@@ -5,18 +5,12 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] public static float moveSpeed = GameController.moveSpeed;
     [SerializeField] private float roomSize = 12f;
 
     private Vector2 _movement;
     private Rigidbody2D _rb;
 
     private MapGenerator mapGenerator;
-    [SerializeField] private int maxStamina;
-    [SerializeField] private float stamina;
-    [SerializeField] private float staminaRegenRate;
-    [SerializeField] private float dashSpeed;
-    [SerializeField] private float dashDuration;
     [SerializeField] private float dashTransitionRatio;
     private float dashTimer = 0;
     private bool dashing;
@@ -32,19 +26,19 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        stamina = maxStamina;
-        staminabar.SetMaxStamina(maxStamina);
+        GameController.stamina = GameController.maxStamina;
+        staminabar.SetMaxStamina(GameController.maxStamina);
     }
 
     private void Update()
     {
-        staminabar.SetStamina(stamina);
-        staminaText.text = "Stamina: " + Mathf.Floor(stamina);
+        staminabar.SetStamina(GameController.stamina);
+        staminaText.text = "Stamina: " + Mathf.Floor(GameController.stamina);
 
         _movement.Set(InputManager.Movement.x, InputManager.Movement.y);
 
         Vector2 position = transform.position;
-        Vector2 velocity = _movement * moveSpeed;
+        Vector2 velocity = _movement * GameController.moveSpeed;
 
         int roomX = Mathf.RoundToInt(position.x / roomSize);
         int roomY = Mathf.RoundToInt(position.y / roomSize);
@@ -57,6 +51,9 @@ public class PlayerMovement : MonoBehaviour
         float rightEdge = roomCenterX + halfRoom;
         float topEdge = roomCenterY + halfRoom;
         float bottomEdge = roomCenterY - halfRoom;
+
+        // Dash logic
+        checkDash(ref velocity);
 
         // RIGHT EDGE
         if (position.x > rightEdge - 0.2f && !mapGenerator.RoomExists(currentIndex + 1))
@@ -74,9 +71,7 @@ public class PlayerMovement : MonoBehaviour
         if (position.y < bottomEdge + 0.2f && !mapGenerator.RoomExists(currentIndex - 10))
             velocity.y = Mathf.Max(0, velocity.y);
 
-        // Dash logic
-        checkDash(ref velocity);
-
+        
         _rb.linearVelocity = velocity;
 
         staminaCalc();
@@ -84,9 +79,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void checkDash(ref Vector2 velocity)
     {
-        if (Input.GetKeyDown("v") && stamina >= 1)
+        if (Input.GetKeyDown("v") && GameController.stamina >= 1)
         {
-            stamina--;
+            GameController.stamina--;
             dashDir = _movement.normalized;
             dashing = true;
             dashTimer = 0;
@@ -95,13 +90,13 @@ public class PlayerMovement : MonoBehaviour
         if (dashing)
         {
             dashTimer += Time.deltaTime;
-            if (dashTimer < dashDuration * (1 - dashTransitionRatio))
+            if (dashTimer < GameController.dashDuration * (1 - dashTransitionRatio))
             {
-                velocity = dashDir * dashSpeed;
+                velocity = dashDir * GameController.dashSpeed;
             }
-            else if (dashTimer < dashDuration)
+            else if (dashTimer < GameController.dashDuration)
             {
-                velocity = dashDir * dashSpeed * dashTransitionRatio;
+                velocity = dashDir * GameController.dashSpeed * dashTransitionRatio;
             }
             else
             {
@@ -112,13 +107,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void staminaCalc()
     {
-        if(stamina < maxStamina)
+        if(GameController.stamina <GameController.maxStamina)
         {
-            stamina += staminaRegenRate * Time.deltaTime;
+            GameController.stamina += GameController.staminaRegenRate * Time.deltaTime;
         }
-        if(stamina > maxStamina)
+        if(GameController.stamina >GameController.maxStamina)
         {
-            stamina = (int) maxStamina;
+            GameController.stamina = (int)GameController.maxStamina;
         }
     }
 

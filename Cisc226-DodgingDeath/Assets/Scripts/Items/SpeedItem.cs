@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class AttackSpeedItem : MonoBehaviour, Item
+public class SpeedItem : MonoBehaviour, Item
 {
-    [SerializeField] private float attackSpeedMult = 0.5f;
+    [SerializeField] private float speedMult = 2f;
     public Sprite icon
     {
         get
@@ -13,7 +13,7 @@ public class AttackSpeedItem : MonoBehaviour, Item
 
     public void onPickup()
     {
-        GameController.attackSpeed *= attackSpeedMult;
+        GameController.moveSpeed *= speedMult;
     }
     public void delete()
     {

@@ -24,6 +24,16 @@ public class GameController : MonoBehaviour
     public TMP_Text healthText;
     public HealthBar healthbar;
 
+    public static int maxStamina = 3;
+    public static float stamina = 3f;
+    public static float staminaRegenRate = 0.3f;
+    public static float dashSpeed = 20f;
+    public static float dashDuration = 0.2f;
+
+
+
+
+
     void Start()
     {
         health = maxHealth;

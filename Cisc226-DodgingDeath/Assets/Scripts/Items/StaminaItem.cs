@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class AttackSpeedItem : MonoBehaviour, Item
+public class StaminaItem : MonoBehaviour, Item
 {
-    [SerializeField] private float attackSpeedMult = 0.5f;
+    [SerializeField] private int StaminaRegenMult = 2;
     public Sprite icon
     {
         get
@@ -13,11 +13,10 @@ public class AttackSpeedItem : MonoBehaviour, Item
 
     public void onPickup()
     {
-        GameController.attackSpeed *= attackSpeedMult;
+        GameController.staminaRegenRate += StaminaRegenMult;
     }
     public void delete()
     {
         Destroy(gameObject);
     }
-    
 }
