@@ -29,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else
         {
-            abilitytext.text = "" + Mathf.Floor(abilityCDTimer);
+            abilitytext.text = "" + (Mathf.Floor(abilityCDTimer) + 1);
         }
         
 
@@ -63,7 +63,7 @@ public class PlayerAttack : MonoBehaviour
         } 
         else
         {
-            abilityCDTimer -= Time.deltaTime;
+            abilityCDTimer -= Time.deltaTime * GameController.abilityRegenRate;
         }
         
 

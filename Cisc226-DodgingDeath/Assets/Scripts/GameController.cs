@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     public static float healthDrainPerSec = 1f;
     public static float spinDuration = 0.17f;
     public static float abilityCD = 3f;
+    public static float abilityRegenRate = 1f;
     
     public static float Health{ get => health; set => health = value; }
     public static int Damage { get => playerDamage; set => playerDamage = value; }
