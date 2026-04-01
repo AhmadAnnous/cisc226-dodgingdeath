@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Callbacks;
 
 public enum EnemyState
 {
@@ -20,6 +21,7 @@ public class EnemyController : MonoBehaviour
 {
 
     GameObject player;
+    private Rigidbody2D rb;
     public EnemyState currstate = EnemyState.Wander;
     public EnemyType enemyType;
     public float range = 10;
@@ -35,6 +37,10 @@ public class EnemyController : MonoBehaviour
     public float bulletSpeed = 10f;
 
 
+    private MapGenerator mapGenerator;
+    [SerializeField] private float roomSize = 12f;
+    
+
     //placeholder values, feel free to edit
     public int health = 10;
     public float lifestealValue = 5;
@@ -45,11 +51,14 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        rb = GetComponent<Rigidbody2D>();
+        mapGenerator = FindFirstObjectByType<MapGenerator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         switch(currstate)
         {
             case(EnemyState.Wander):
@@ -102,7 +111,7 @@ public class EnemyController : MonoBehaviour
             StartCoroutine(ChooseDirection());
         }
 
-        transform.position += -transform.right * speed * Time.deltaTime;
+        rb.linearVelocity = -transform.right * speed;
         if(isPlayerInRange(range))
         {
             currstate = EnemyState.Follow;
@@ -110,12 +119,15 @@ public class EnemyController : MonoBehaviour
     }
 
     void Follow()
-    {   
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+    {       
+        Vector2 dir = (player.transform.position - transform.position).normalized;
+        rb.linearVelocity = dir * speed;    
+    
     }
 
     void Attack()
     {
+        rb.linearVelocity = Vector2.zero;
         if(!cooldownAttack)
         {
             switch(enemyType)
