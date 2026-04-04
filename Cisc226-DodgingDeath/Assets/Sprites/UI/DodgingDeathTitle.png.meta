@@ -79,7 +79,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -151,7 +151,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 150
+        width: 13
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -409,11 +409,55 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: DodgingDeathTitle_12
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 0
+        width: 73
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b15dfc1b1fa2a14b98c04e2241b4449
+      internalID: -1775121844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DodgingDeathTitle_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 150
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00ad2a367e3d07149a1140383bf62215
+      internalID: 1357542361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c5debb366716c7148a3e39ab680e4e0a
+    spriteID: 899cb316680cc0c4e99ff444022a4651
     internalID: 0
     vertices: []
     indices: 
@@ -427,6 +471,8 @@ TextureImporter:
       DodgingDeathTitle_1: -4498875092405562945
       DodgingDeathTitle_10: -2268253673396701041
       DodgingDeathTitle_11: -1072635135454469294
+      DodgingDeathTitle_12: -1775121844
+      DodgingDeathTitle_13: 1357542361
       DodgingDeathTitle_2: 3194416116555625215
       DodgingDeathTitle_3: 2406112991304091920
       DodgingDeathTitle_4: 1409830261093649771
