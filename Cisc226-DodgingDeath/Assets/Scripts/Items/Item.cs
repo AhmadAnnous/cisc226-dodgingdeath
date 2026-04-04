@@ -4,8 +4,5 @@ interface Item
 {
     void onPickup();
     void delete();
-    Sprite icon
-    {
-        get;
-    }
+    Sprite icon { get; }
 }

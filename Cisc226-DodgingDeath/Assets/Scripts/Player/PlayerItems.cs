@@ -15,8 +15,8 @@ public class PlayerItems : MonoBehaviour
 
             Item item = other.GetComponent<Item>();
 
-            getItem(item);
             inventory.AddItemIcon(item.icon);
+            getItem(item);
 
             
         }
