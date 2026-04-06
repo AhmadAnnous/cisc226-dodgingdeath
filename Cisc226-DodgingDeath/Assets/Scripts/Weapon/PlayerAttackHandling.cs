@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private Animator anim;
     float timeUntilMelee = 0;
-    bool eraseBullets = false;
+    public bool eraseBullets = false;
     float abilityCDTimer = 0f;
     public TMP_Text abilitytext;
     public StaminaBar abilitybar;
@@ -78,6 +78,15 @@ public class PlayerAttack : MonoBehaviour
         if(other.tag == "Bullet" && eraseBullets)
         {
             other.GetComponent<BulletController>().delete();
+            
+        }
+        if(other.tag == "Boss")
+        {
+            other.GetComponent<BossController>().takeDamage(GameController.playerDamage);
+        }
+        if(other.tag == "BossBullet" && eraseBullets)
+        {
+            other.GetComponent<BossBullet>().delete();
         }
     }
 
