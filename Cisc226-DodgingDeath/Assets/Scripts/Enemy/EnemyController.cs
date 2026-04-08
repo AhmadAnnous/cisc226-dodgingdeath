@@ -7,7 +7,7 @@ public enum EnemyState
 {
     Wander,
     Follow,
-    Die,
+    Idle,
     Attack
 };
 
@@ -22,7 +22,7 @@ public class EnemyController : MonoBehaviour
 
     GameObject player;
     private Rigidbody2D rb;
-    public EnemyState currstate = EnemyState.Wander;
+    public EnemyState currstate = EnemyState.Idle;
     public EnemyType enemyType;
     public float range = 10;
     public float speed = 1;
@@ -59,33 +59,43 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
 
-        switch(currstate)
+        if (!IsNearCamera(6f))
         {
-            case(EnemyState.Wander):
-                Wander();
-                break;
-            case(EnemyState.Follow):
-                Follow();
-                break;
-            case(EnemyState.Die):
-                break;
-            case(EnemyState.Attack):
-                Attack();
-                break;
-
+            currstate = EnemyState.Idle;
+            rb.linearVelocity = Vector2.zero;
+            return;
         }
 
-        if(isPlayerInRange(range) && currstate != EnemyState.Die)
+        if (Vector3.Distance(transform.position, player.transform.position) <= attackRange)
+        {
+            currstate = EnemyState.Attack;
+        }
+        else if (isPlayerInRange(range))
         {
             currstate = EnemyState.Follow;
         }
-        else if(!isPlayerInRange(range) && currstate != EnemyState.Die)
+        else
         {
             currstate = EnemyState.Wander;
         }
-        if(Vector3.Distance(transform.position, player.transform.position) <= attackRange)
+
+        switch(currstate)
         {
-            currstate = EnemyState.Attack;
+            case EnemyState.Wander:
+                Wander();
+                break;
+
+            case EnemyState.Follow:
+                Follow();
+                break;
+
+            case EnemyState.Attack:
+                Attack();
+                break;
+
+            case EnemyState.Idle:
+                Idle();
+                break;
         }
     }
 
@@ -173,4 +183,20 @@ public class EnemyController : MonoBehaviour
             Death();
         }
     }
+
+
+    bool IsNearCamera(float range)
+{
+    Vector2 camPos = Camera.main.transform.position;
+    Vector2 enemyPos = transform.position;
+
+    return Mathf.Abs(camPos.x - enemyPos.x) <= range &&
+           Mathf.Abs(camPos.y - enemyPos.y) <= range;
+    }
+    void Idle()
+    {
+        rb.linearVelocity = Vector2.zero;
+    }
 }
+
+    
