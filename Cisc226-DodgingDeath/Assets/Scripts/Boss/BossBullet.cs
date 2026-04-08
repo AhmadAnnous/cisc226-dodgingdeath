@@ -3,7 +3,7 @@ using UnityEngine;
 public class BossBullet : MonoBehaviour
 {
     private float angle = 0f;
-    private float rotSpeed = 720f;
+    private float rotSpeed = -720f;
     private float speed = 12f;
     private int damage = 5;
     public float lifetime = 5f;
