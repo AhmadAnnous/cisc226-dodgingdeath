@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -20,18 +19,30 @@ public class MapGenerator : MonoBehaviour
     private List<Cell> spawnedCells;
 
     [Header("Sprite References")]
-    [SerializeField] private Sprite item;
-    [SerializeField] private Sprite shop;
-    [SerializeField] private Sprite boss;
+    [SerializeField] private GameObject dmgitem;
+    [SerializeField] private GameObject stmitem;
+    [SerializeField] private GameObject spditem;
+    [SerializeField] private GameObject abiitem;
+    [SerializeField] private GameObject atkitem;
+    [SerializeField] private GameObject dshitem;
+    //SHOP IS SCRAPPED NO TIME
+    private GameObject[] itemlist = new GameObject[6];
+    [SerializeField] private GameObject boss;
     [SerializeField] private GameObject enemyPrefab;
 
     void Start()
     {
+        itemlist[0] = dmgitem;
+        itemlist[1] = stmitem;
+        itemlist[2] = spditem;
+        itemlist[3] = abiitem;
+        itemlist[4] = atkitem;
+        itemlist[5] = dshitem;
         minRooms = 7;
         maxRooms = 15;
         cellSize = 12f;
         spawnedCells = new();
-
+        
         SetupDungeon();
     }
 
@@ -106,15 +117,19 @@ public class MapGenerator : MonoBehaviour
         {
             if(cell.index == itemRoomIndex)
             {
-                cell.SetSpecialRoomSprite(item);
+                Vector2 pos = cell.transform.position;
+                int itemval = Random.Range(0,5);
+                cell.SpawnItem(itemlist[itemval], pos);
             }
             if(cell.index == shopRoomIndex)
+            //FIX IT
             {
-                cell.SetSpecialRoomSprite(shop);
+                //cell.SetSpecialRoomSprite(shop);
             }
             if(cell.index == bossRoomIndex)
             {
-                cell.SetSpecialRoomSprite(boss);
+                Vector2 pos = cell.transform.position;
+                cell.SpawnBoss(boss, pos);
             }
         }
     }

@@ -11,6 +11,7 @@ TagManager:
   - Boss
   - BossBullet
   - Scythe
+  - BulletSpawner
   layers:
   - Default
   - TransparentFX
