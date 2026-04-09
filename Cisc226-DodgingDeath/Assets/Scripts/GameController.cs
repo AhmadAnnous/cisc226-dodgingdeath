@@ -67,6 +67,19 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public static void youWin()
+    {
+        //DO SOMEOJIHVFBNKSJG KJHGA KJ
+        //AAAAAAAAAAAAAAAAAAAAAAAAAA
+        //
+        //
+        //a
+        //
+        //a
+        //a
+        //
+        //a
+    } 
     
 
     public static void DamagePlayer(int damage)

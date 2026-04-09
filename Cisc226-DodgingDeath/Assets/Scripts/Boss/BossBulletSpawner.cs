@@ -26,7 +26,11 @@ public class BossBulletSpawner : MonoBehaviour
         if(!onCooldown)
         {
             randLoc = generateRand3();
-            Shoot(randLoc);
+            if(GameObject.FindGameObjectWithTag("Boss").GetComponent<BossController>().isActive)
+            {
+                Shoot(randLoc);
+            }
+            
         }
     }
     private IEnumerator Cooldown()
