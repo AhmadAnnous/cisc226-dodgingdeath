@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public static  bool gamepaused = false;
     public GameObject pausemenu;
+    public GameObject statmenu;
     // Update is called once per frame
     void Update()
     {
@@ -15,6 +16,7 @@ public class PauseMenu : MonoBehaviour
             if (gamepaused)
             {
                 Resume();
+                CloseStats();
             }
             else
             {
@@ -43,9 +45,14 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void OpenInventory()
+    public void OpenStats()
     {
-        
+        statmenu.SetActive(true);
+    }
+
+    public void CloseStats()
+    {
+        statmenu.SetActive(false);
     }
 
     public void QuitGame()

@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
     public static float HealthDrainPerSec { get => healthDrainPerSec; set => healthDrainPerSec = value; }
     public TMP_Text healthText;
     public HealthBar healthbar;
+    public TMP_Text stattext;
 
     public static int maxStamina = 3;
     public static float stamina = 3f;
@@ -55,6 +56,11 @@ public class GameController : MonoBehaviour
         health -= Time.deltaTime * healthDrainPerSec;
         healthbar.SetHealth(health);
         healthText.text = "Health: " + Mathf.Floor(health);
+
+        stattext.text = "Max Health: " + maxHealth + "\nDamage: " + playerDamage 
+        + "\nMove Speed: " + moveSpeed + "\nAttack Speed: " + attackSpeed
+        + "\nMax Stamina: " + maxStamina;
+
         if (health <= 0)
         {
             KillPlayer();
