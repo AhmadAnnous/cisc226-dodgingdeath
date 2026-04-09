@@ -16,10 +16,10 @@ public class Cell : MonoBehaviour
         spriteRenderer.sprite = icon;
     }
 
-    public void SpawnBoss(GameObject boss, Vector3 location)
+    public void SpawnBoss(GameObject bossprefab, Vector3 location)
     {
         
-        GameObject bullet = Instantiate(boss, location, Quaternion.Euler(0,0,0));
+        GameObject boss = Instantiate(bossprefab, location, Quaternion.Euler(0,0,0));
         GameObject.FindGameObjectWithTag("BulletSpawner").GetComponent<BossBulletSpawner>().setLoc(location);
     }
 
