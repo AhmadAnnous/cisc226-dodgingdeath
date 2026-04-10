@@ -4434,11 +4434,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7295174344488802714, guid: 907fb2959aea87a43afc3f49a4ea622f, type: 3}
       propertyPath: m_BodyType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7295174344488802714, guid: 907fb2959aea87a43afc3f49a4ea622f, type: 3}
       propertyPath: m_CollisionDetection
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7819660313726885859, guid: 907fb2959aea87a43afc3f49a4ea622f, type: 3}
       propertyPath: inventory
