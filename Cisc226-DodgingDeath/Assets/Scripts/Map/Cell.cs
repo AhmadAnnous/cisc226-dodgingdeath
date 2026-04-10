@@ -59,6 +59,44 @@ public class Cell : MonoBehaviour
 
         return door;
     }
+
+    public void CreateWalls()
+    {
+        float roomHeight = 12f;
+        float roomWidth = roomHeight * (16f / 9f);
+
+        float halfWidth = roomWidth / 2f;
+        float halfHeight = roomHeight / 2f;
+
+        float inset = 0.3f; // distance from visual edge
+
+        // LEFT WALL
+        CreateWall(new Vector2(-halfWidth + inset, 0),
+                new Vector2(0.5f, roomHeight));
+
+        // RIGHT WALL
+        CreateWall(new Vector2(halfWidth - inset, 0),
+                new Vector2(0.5f, roomHeight));
+
+        // TOP WALL
+        CreateWall(new Vector2(0, halfHeight - inset),
+                new Vector2(roomWidth, 0.5f));
+
+        // BOTTOM WALL
+        CreateWall(new Vector2(0, -halfHeight + inset),
+                new Vector2(roomWidth, 0.5f));
+    }
+    void CreateWall(Vector2 localPos, Vector2 size)
+    {
+        GameObject wall = new GameObject("Wall");
+
+        wall.transform.SetParent(transform, false);
+        wall.transform.localPosition = localPos;
+
+        BoxCollider2D col = wall.AddComponent<BoxCollider2D>();
+        col.size = size;
+        col.isTrigger = false;
+    }
     public void SetupDoors(MapGenerator map)
     {
         float roomHeight = 12f;
