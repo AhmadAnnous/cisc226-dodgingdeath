@@ -1336,8 +1336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3413bd8477f2e434ca9fc84adf966a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomCamera
+  roomHeight: 12
+  doorSize: 2.5
   player: {fileID: 2092181675}
-  roomSize: 12
 --- !u!1 &450638359
 GameObject:
   m_ObjectHideFlags: 0
@@ -4461,6 +4462,10 @@ PrefabInstance:
     - target: {fileID: 8390112215074677405, guid: 907fb2959aea87a43afc3f49a4ea622f, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8615267952555197292, guid: 907fb2959aea87a43afc3f49a4ea622f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 32767
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
