@@ -66,6 +66,6 @@ public class BossBulletSpawner : MonoBehaviour
             loc *= 1.1f;
         }
 
-        return loc;
+        return loc + thisLocation;
     }
 }
