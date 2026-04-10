@@ -182,6 +182,8 @@ public class MapGenerator : MonoBehaviour
         newCell.value = 1;
         newCell.index = index;
 
+        newCell.CreateWalls();
+
         spawnedCells.Add(newCell);
 
         SpawnEnemies(newCell);

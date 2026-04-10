@@ -54,7 +54,6 @@ public class RoomCamera : MonoBehaviour
 
         transform.position = newCamPos;
 
-        // 🔥 MOVE PLAYER INTO NEW ROOM
         float offset = 1.5f; // how far inside the room they appear
 
         Vector3 playerPos = player.position;
