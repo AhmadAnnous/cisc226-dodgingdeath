@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -84,7 +85,7 @@ public class GameController : MonoBehaviour
 
     private static void KillPlayer()
     {
-        // health = 0;
-        // Time.timeScale = 0;
+        Time.timeScale = 0f;
+        SceneManager.LoadScene(3);
     }
 }

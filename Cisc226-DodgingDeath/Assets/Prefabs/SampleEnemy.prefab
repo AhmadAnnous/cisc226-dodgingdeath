@@ -110,7 +110,7 @@ MonoBehaviour:
   enemyType: 1
   range: 12
   speed: 1
-  attackRange: 12
+  attackRange: 6
   cooldown: 1
   firePoint: {fileID: 8901855098439300781}
   bulletPrefab: {fileID: 3150757986733082845, guid: 918f629e0ac2cb2468aa1ace07fa7726, type: 3}
