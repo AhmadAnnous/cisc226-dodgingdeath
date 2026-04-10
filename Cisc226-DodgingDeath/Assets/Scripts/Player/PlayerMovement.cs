@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void checkDash(ref Vector2 velocity)
     {
-        if (Input.GetKeyDown("v") && GameController.stamina >= 1)
+        if (Input.GetKeyDown("v") && GameController.stamina >= 1 && !dashing)
         {
             GameController.stamina--;
             dashDir = _movement.normalized;

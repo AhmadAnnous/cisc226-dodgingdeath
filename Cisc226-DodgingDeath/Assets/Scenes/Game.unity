@@ -2538,7 +2538,8 @@ MonoBehaviour:
   atkitem: {fileID: 5050220841954862507, guid: b9c638bb39993384abbaf8b2434b68d0, type: 3}
   dshitem: {fileID: 928219169339379787, guid: 78d032d16837156459be17afbfa65d7b, type: 3}
   boss: {fileID: 6547948451634544285, guid: 75ab7bd7feb680441ad913fcabad7d18, type: 3}
-  enemyPrefab: {fileID: 929325597443392115, guid: fd79c4dfaa96e16498a9c8d70fb0b357, type: 3}
+  enemyPrefab1: {fileID: 929325597443392115, guid: fd79c4dfaa96e16498a9c8d70fb0b357, type: 3}
+  enemyPrefab2: {fileID: 3408752173084272362, guid: 68577851b201ace4f8b7477834f6849f, type: 3}
 --- !u!4 &1036230955
 Transform:
   m_ObjectHideFlags: 0
