@@ -14,7 +14,7 @@ public class BossController : MonoBehaviour
         {
             Destroy(gameObject);
             isActive = false;
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
     }
 
