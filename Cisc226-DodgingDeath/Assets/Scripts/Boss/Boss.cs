@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour
 {
@@ -13,8 +14,7 @@ public class BossController : MonoBehaviour
         {
             Destroy(gameObject);
             isActive = false;
-            winscreen.SetActive(true);
-            Time.timeScale = 0f;
+            SceneManager.LoadScene(0);
         }
     }
 
