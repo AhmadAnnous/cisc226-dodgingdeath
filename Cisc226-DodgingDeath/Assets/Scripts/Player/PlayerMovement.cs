@@ -5,8 +5,8 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float roomSize = 12f;
-
+    [SerializeField] private float roomHeight = 12f;
+    private float roomWidth;
     private Vector2 _movement;
     private Rigidbody2D _rb;
 
@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
         GameController.stamina = GameController.maxStamina;
         staminabar.SetMaxStamina(GameController.maxStamina);
+        roomWidth = roomHeight * (16f / 9f);
     }
 
     private void Update()
@@ -40,17 +41,18 @@ public class PlayerMovement : MonoBehaviour
         Vector2 position = transform.position;
         Vector2 velocity = _movement * GameController.moveSpeed;
 
-        int roomX = Mathf.RoundToInt(position.x / roomSize);
-        int roomY = Mathf.RoundToInt(position.y / roomSize);
+        int roomX = Mathf.RoundToInt(position.x / roomWidth);
+        int roomY = Mathf.RoundToInt(position.y / roomHeight);
         int currentIndex = roomY * 10 + roomX;
 
-        float halfRoom = roomSize / 2f;
-        float roomCenterX = roomX * roomSize;
-        float roomCenterY = roomY * roomSize;
-        float leftEdge = roomCenterX - halfRoom;
-        float rightEdge = roomCenterX + halfRoom;
-        float topEdge = roomCenterY + halfRoom;
-        float bottomEdge = roomCenterY - halfRoom;
+        float halfWidth = roomWidth / 2f;
+        float halfHeight = roomHeight / 2f;
+        float roomCenterX = roomX * roomWidth;
+        float roomCenterY = roomY * roomHeight;
+        float leftEdge = roomCenterX - halfWidth;
+        float rightEdge = roomCenterX + halfWidth;
+        float topEdge = roomCenterY + halfHeight;
+        float bottomEdge = roomCenterY - halfHeight;
 
         // Dash logic
         checkDash(ref velocity);

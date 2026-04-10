@@ -14,7 +14,8 @@ public class MapGenerator : MonoBehaviour
     private int shopRoomIndex;
     private int itemRoomIndex;
     public Cell cellPrefab;
-    private float cellSize;
+    private float cellWidth;
+    private float cellHeight;   
     private Queue<int> cellQueue;
     private List<Cell> spawnedCells;
 
@@ -25,7 +26,6 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private GameObject abiitem;
     [SerializeField] private GameObject atkitem;
     [SerializeField] private GameObject dshitem;
-    //SHOP IS SCRAPPED NO TIME
     private GameObject[] itemlist = new GameObject[6];
     [SerializeField] private GameObject boss;
     [SerializeField] private GameObject enemyPrefab;
@@ -40,7 +40,8 @@ public class MapGenerator : MonoBehaviour
         itemlist[5] = dshitem;
         minRooms = 7;
         maxRooms = 15;
-        cellSize = 12f;
+        cellHeight = 12f;
+        cellWidth = cellHeight * (16f / 9f);
         spawnedCells = new();
         
         SetupDungeon();
@@ -66,7 +67,7 @@ public class MapGenerator : MonoBehaviour
             int x = startIndex % 10;
             int y = startIndex / 10;
 
-            Vector2 startPos = new Vector2(x * cellSize, y * cellSize);
+            Vector2 startPos = new Vector2(x * cellWidth, y * cellHeight);
             player.transform.position = startPos;
         }
     }
@@ -91,6 +92,10 @@ public class MapGenerator : MonoBehaviour
             return;
         }
         SetupSpecialRooms();
+        foreach (var cell in spawnedCells)
+        {
+            cell.SetupDoors(this);
+        }
     }
     void SetupSpecialRooms()
     {
@@ -170,7 +175,7 @@ public class MapGenerator : MonoBehaviour
     {
         int x = index % 10;
         int y = index / 10;
-        Vector2 position = new Vector2(x * cellSize, y * cellSize);
+        Vector2 position = new Vector2(x * cellWidth, y * cellHeight);
 
         Cell newCell = Instantiate(cellPrefab, position, Quaternion.identity);
         newCell.value = 1;
