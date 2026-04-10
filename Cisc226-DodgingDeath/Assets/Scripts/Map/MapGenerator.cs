@@ -28,7 +28,8 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private GameObject dshitem;
     private GameObject[] itemlist = new GameObject[6];
     [SerializeField] private GameObject boss;
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject enemyPrefab1;
+    [SerializeField] private GameObject enemyPrefab2;
 
     void Start()
     {
@@ -195,7 +196,19 @@ public class MapGenerator : MonoBehaviour
 
             Vector2 spawnPos = (Vector2)room.transform.position + new Vector2(randX, randY);
 
-            Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+            int e = Random.Range(0,2);
+            switch(e)
+            {
+                case 0:
+                    Instantiate(enemyPrefab1, spawnPos, Quaternion.identity);
+                    break;
+                case 1:
+                    Instantiate(enemyPrefab2, spawnPos, Quaternion.identity);
+                    break;
+
+            }
+
+            
         }
     }
     public bool RoomExists(int index)

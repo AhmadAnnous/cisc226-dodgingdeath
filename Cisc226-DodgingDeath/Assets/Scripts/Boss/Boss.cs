@@ -1,17 +1,41 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour
 {
     public int health = 200;
     public bool isActive = false;
+    public GameObject winscreen;
     
     public void takeDamage(int damage)
     {
         health -= damage;
         if(health <= 0)
         {
-            GameController.youWin();
+            Destroy(gameObject);
+            isActive = false;
+            SceneManager.LoadScene(0);
         }
+    }
+
+    void Update()
+    {
+        if (!isActive)
+        {
+            if (IsNearCamera(6f))
+        {
+            isActive = true;
+        }
+        }
+    }
+
+    bool IsNearCamera(float range)
+    {
+        Vector2 camPos = Camera.main.transform.position;
+        Vector2 enemyPos = transform.position;
+
+        return Mathf.Abs(camPos.x - enemyPos.x) <= range &&
+           Mathf.Abs(camPos.y - enemyPos.y) <= range;
     }
     
 }

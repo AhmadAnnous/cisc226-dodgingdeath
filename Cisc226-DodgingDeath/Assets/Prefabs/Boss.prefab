@@ -28,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660714594300480393}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: -3.26, y: 4.08, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.86602545, w: 0.49999994}
+  m_LocalPosition: {x: -3.83, y: -2.12, z: 0}
   m_LocalScale: {x: 8.360699, y: 8.74483, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5399852155340733273}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 120}
 --- !u!212 &2631388494844131582
 SpriteRenderer:
   serializedVersion: 2
@@ -407,6 +407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossController
   health: 200
   isActive: 0
+  winscreen: {fileID: 171076014791765025, guid: 7ffc8c06f9756cb419f1b757967d5a3c, type: 3}
 --- !u!1 &3991602465347575525
 GameObject:
   m_ObjectHideFlags: 0

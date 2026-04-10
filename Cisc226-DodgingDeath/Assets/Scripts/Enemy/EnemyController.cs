@@ -186,11 +186,11 @@ public class EnemyController : MonoBehaviour
 
 
     bool IsNearCamera(float range)
-{
-    Vector2 camPos = Camera.main.transform.position;
-    Vector2 enemyPos = transform.position;
+    {
+        Vector2 camPos = Camera.main.transform.position;
+        Vector2 enemyPos = transform.position;
 
-    return Mathf.Abs(camPos.x - enemyPos.x) <= range &&
+        return Mathf.Abs(camPos.x - enemyPos.x) <= range &&
            Mathf.Abs(camPos.y - enemyPos.y) <= range;
     }
     void Idle()
