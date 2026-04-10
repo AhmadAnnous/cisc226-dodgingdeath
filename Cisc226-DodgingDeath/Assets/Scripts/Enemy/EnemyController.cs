@@ -1,7 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Callbacks;
 
 public enum EnemyState
 {
@@ -27,7 +25,6 @@ public class EnemyController : MonoBehaviour
     public float range = 10;
     public float speed = 1;
     private bool chooseDir = false;
-    private bool dead = false;
     private Vector3 randDir;
     public float attackRange;
     private bool cooldownAttack = false;
@@ -38,7 +35,6 @@ public class EnemyController : MonoBehaviour
 
 
     private MapGenerator mapGenerator;
-    [SerializeField] private float roomSize = 12f;
     
 
     //placeholder values, feel free to edit
